@@ -16,6 +16,9 @@ export type TMovie = {
     video:boolean
     vote_average:number
     vote_count:number
+    production_companies?:{name:string}[]
+    production_countries?:{name:string}[]
+    homepage?:string
 
 
 
