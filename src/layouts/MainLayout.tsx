@@ -6,8 +6,8 @@ import Header from '../components/header/Header'
 const MainLayout = () => {
   return (
     <div className='flex flex-col min-h-screen text-black'>
-    <div ><Header/></div>
-    <div className="flex-grow">
+    <div className='' ><Header/></div>
+    <div className="flex-grow mt-20">
     <Container>
       <Outlet/>
       </Container>
