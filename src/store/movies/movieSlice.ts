@@ -30,7 +30,11 @@ const initialState:CategoryState = {
 const moviesSlice = createSlice({
     name: 'Movies',
     initialState,
-    reducers:{},
+    reducers:{
+        clearMovieDetails :(state) =>{
+            state.oneMovieDetails= null
+        }
+    },
     extraReducers:(builder)=>{
         // get all movies
         builder.addCase(getAllTrendingMovies.pending,(state)=>{
@@ -69,6 +73,6 @@ const moviesSlice = createSlice({
 
     }
 })
-
+export const  {clearMovieDetails} = moviesSlice.actions
 const productReducer = moviesSlice.reducer
 export default productReducer

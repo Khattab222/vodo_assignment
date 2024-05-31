@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { getMovieDetails } from '../store/movies/action/getMovieDetails';
 import { Button } from '@mui/material';
+import { clearMovieDetails } from '../store/movies/movieSlice';
+import Heading from '../components/heading/Heading';
 
 
 const imgpath = `https://image.tmdb.org/t/p/w500/`;
@@ -17,11 +19,13 @@ const MovieDetailsPage = () => {
    
       dispatch(getMovieDetails(movieId as string))
       return () =>{
-        console.log("out")
+       dispatch(clearMovieDetails())
       }
     }, [dispatch,movieId])
     
   return (
+    <>
+    <Heading title='Movie Details'/>
     <div className='grid grid-cols-6  gap-4 h-min'>
         <div className='col-span-6 md:col-span-3 shadow-lg rounded-md h-min'>
           <img src={imgpath + oneMovieDetails?.poster_path} alt={oneMovieDetails?.title} className='w-full h-5/6 rounded-md inline-block' />
@@ -80,6 +84,7 @@ const MovieDetailsPage = () => {
           
         </div>
     </div>
+    </>
   )
 }
 
