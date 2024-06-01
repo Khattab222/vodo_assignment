@@ -3,6 +3,7 @@ import { TLoading } from "../../types/loading";
 import { TMovie } from "../../types/movietype";
 import { getAllTrendingMovies } from "./action/getAllTrendingMovies";
 import { getMovieDetails } from "./action/getMovieDetails";
+import { searchMovies } from "./action/searchMovies";
 
 
 interface CategoryState {
@@ -64,6 +65,25 @@ const moviesSlice = createSlice({
             state.oneMovieDetails = action.payload
         })
         builder.addCase(getMovieDetails.rejected,(state,action) =>{
+            state.loading='failed'
+            if ( typeof action.payload === 'string') {
+                
+                state.error = action.payload
+            }
+        })
+
+        //search for movies
+        builder.addCase(searchMovies.pending,(state) =>{
+            state.loading='pending'
+            state.error=null;
+        })
+        builder.addCase(searchMovies.fulfilled,(state,action) =>{
+            state.loading='succeeded'
+            state.allMovies=action.payload.results
+            state.total_pages = action.payload.total_pages
+            state.total_results = action.payload.total_results
+        })
+        builder.addCase(searchMovies.rejected,(state,action) =>{
             state.loading='failed'
             if ( typeof action.payload === 'string') {
                 

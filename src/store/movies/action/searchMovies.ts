@@ -27,9 +27,9 @@ export const searchMovies = createAsyncThunk('movies/searchMovies' , async({sear
     }
     try {
        const {data} = await baseurl.get<TResponse>(url,config);
-       console.log(data) 
+       return data
     } catch (error) {
-        console.log(error)
+       
         if (isAxiosError(error)) {
             return rejectWithValue(error.response?.data.message || error.message)
              

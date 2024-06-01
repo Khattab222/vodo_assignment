@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom';
 import { TMovie } from '../../types/movietype'
 import { Button } from '@mui/material';
 
+
+
+
+
 const imgpath = `https://image.tmdb.org/t/p/w500/`;
 
 const MovieCard = ({poster_path,title,overview,id,vote_average}:TMovie) => {
   return (
     <div className=" rounded-lg relative group overflow-hidden  ">
-      <div className=' absolute bg-indigo-500 w-[40px] h-[30px] top-0 right-0 text-center font-semibold text-xl text-amber-300 rounded  z-30'>{Math.ceil (vote_average)}</div>
+      <div className=' absolute bg-indigo-500 w-[40px] h-[30px] top-0 right-0 text-center font-semibold text-xl text-amber-300 rounded  z-9 '>{Math.ceil (vote_average)}</div>
     <img src={imgpath + poster_path} alt="" className="w-full rounded-lg group-hover:scale-125 transition " />
     <Link to={`movie/${id}`} className="
     flex 
