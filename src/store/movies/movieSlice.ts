@@ -94,5 +94,5 @@ const moviesSlice = createSlice({
     }
 })
 export const  {clearMovieDetails} = moviesSlice.actions
-const productReducer = moviesSlice.reducer
-export default productReducer
+const moviesReducer = moviesSlice.reducer
+export default moviesReducer
